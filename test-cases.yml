@@ -1,0 +1,261 @@
+---
+- summary: |
+    Проверка перехода на форму регистрации
+  requirement: |
+    Ссылка "Sign Up" должна вести на форму входа
+  prerequisites: |
+    Открыта шлавная страница https://codebattle.hexlet.io/
+  test-data: |
+    Не требуется
+  steps:
+    - Нажать на кнопку "Sign Up"
+  expected-result: |
+    Открывается форма регистрации
+    
+- summary: |
+    Проверка успешной регистрации при корректных данных
+  requirement: |
+    При корректном заполнении всех полей пользователь должен быть зарегистрирован и авторизован
+  prerequisites: |
+    Открыта форма регистрации
+  test-data: |
+    Nickname = polly_test  
+    Email = polly@example.com  
+    Пароль = Testpass123!  
+    Подтверждение пароля = Testpass123!
+  steps:
+    - Ввести nickname
+    - Ввести email
+    - Ввести пароль
+    - Ввести подтверждение пароля
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Пользователь успешно регистрируется и попадает на главную страницу
+
+- summary: |
+    Проверка ошибки при незаполненных обязательных полях
+  requirement: |
+    Все поля формы регистрации обязательны для заполнения
+  prerequisites: |
+    Открыта форма регистрации
+  test-data: |
+    Nickname = (пусто)  
+    Email = (пусто)  
+    Пароль = (пусто)  
+    Подтверждение пароля = (пусто)
+  steps:
+    - Оставить все поля пустыми
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Под каждым полем отображаются сообщения об ошибке
+
+- summary: |
+    Проверка ошибки при неверном формате email
+  requirement: |
+    Email должен быть в формате name@domain
+  prerequisites: |
+    Открыта форма регистрации
+  test-data: |
+    Nickname = polly_test  
+    Email = polly@com  
+    Пароль = Testpass123!  
+    Подтверждение пароля = Testpass123!
+  steps:
+    - Заполнить поля с некорректным email
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Под полем email появляется сообщение об ошибке
+
+- summary: |
+    Проверка ошибки при несовпадении пароля и подтверждения
+  requirement: |
+    Пароль и подтверждение пароля должны совпадать
+  prerequisites: |
+    Открыта форма регистрации
+  test-data: |
+    Nickname = polly_test  
+    Email = polly@example.com  
+    Пароль = Testpass123!  
+    Подтверждение пароля = Testpass124!
+  steps:
+    - Заполнить поля, введя разные значения в пароль и подтверждение
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Под полем подтверждения отображается ошибка "Пароли должны совпадать"
+
+- summary: |
+    Проверка ошибки при отсутствии спецсимвола в пароле
+  requirement: |
+    Пароль должен содержать хотя бы один специальный символ
+  prerequisites: |
+    Открыта форма регистрации
+  test-data: |
+    Nickname = polly_test  
+    Email = polly@example.com  
+    Пароль = Testpass123  
+    Подтверждение пароля = Testpass123
+  steps:
+    - Заполнить поля с паролем без спецсимволов
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Под полем пароля отображается ошибка о необходимости спецсимвола
+
+- summary: |
+    Проверка ошибки при вводе псевдонима кириллицей
+  requirement: |
+    Nickname должен состоять только из латинских букв, цифр и подчёркиваний
+  prerequisites: |
+    Открыта форма регистрации
+  test-data: |
+    Nickname = Полина  
+    Email = polly@example.com  
+    Пароль = Testpass123!  
+    Подтверждение пароля = Testpass123!
+  steps:
+    - Ввести nickname кириллицей
+    - Заполнить остальные поля корректно
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Под полем nickname отображается сообщение об ошибке
+
+- summary: |
+    Проверка отображения пароля при нажатии на иконку-глаз
+  requirement: |
+    При нажатии на иконку-глаз рядом с полем пароля — он должен становиться видимым
+  prerequisites: |
+    Открыта форма регистрации
+  test-data: |
+    Nickname = polly_test  
+    Email = polly@example.com  
+    Пароль = Testpass123!  
+    Подтверждение пароля = Testpass123!
+  steps:
+    - Ввести пароль
+    - Нажать на иконку-глаз
+  expected-result: |
+    Пароль отображается обычным текстом
+
+- summary: |
+    Проверка авторизации через GitHub
+  requirement: |
+    Кнопка "Sign in with GitHub" должна открывать окно авторизации GitHub и перенаправлять на сайт после входа
+  prerequisites: |
+    Открыта форма входа
+  test-data: |
+    Аккаунт GitHub: github_user  
+    Пароль GitHub: github_password
+  steps:
+    - Нажать на кнопку "Sign in with GitHub"
+    - При необходимости ввести логин и пароль GitHub
+    - Нажать "Authorize" (если требуется)
+  expected-result: |
+    Пользователь должен попасть на главную страницу сайта под своей учетной записью
+
+- summary: |
+    Проверка авторизации через Discord
+  requirement: |
+    Кнопка "Sign in with Discord" должна открывать окно авторизации Discord и перенаправлять на сайт после входа
+  prerequisites: |
+    Открыта форма входа
+  test-data: |
+    Аккаунт Discord: discord_user  
+    Пароль Discord: discord_password
+  steps:
+    - Нажать на кнопку "Sign in with Discord"
+    - При необходимости ввести логин и пароль Discord
+    - Нажать "Авторизовать" в открывшемся окне
+  expected-result: |
+    Пользователь должен попасть на главную страницу сайта под своей учетной записью
+
+- summary: |
+    Проверка перехода на форму входа
+  requirement: |
+    Ссылка "Sign In" должна вести на форму входа
+  prerequisites: |
+    Открыта форма регистрации
+  test-data: |
+    Не требуется
+  steps:
+    - Нажать на ссылку "Sign In"
+  expected-result: |
+    Открывается форма входа
+
+- summary: |
+    Проверка успешного входа с корректными данными
+  requirement: |
+    Пользователь с корректным email и паролем должен войти в систему
+  prerequisites: |
+    Существующий зарегистрированный пользователь
+  test-data: |
+    Email = polly@example.com  
+    Пароль = Testpass123!
+  steps:
+    - Ввести email
+    - Ввести пароль
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Пользователь должен быть перенаправлен на главную страницу сайта
+
+- summary: |
+    Проверка входа с неверным паролем
+  requirement: |
+    При неверном пароле пользователь должен получить сообщение об ошибке
+  prerequisites: |
+    Существующий зарегистрированный пользователь
+  test-data: |
+    Email = polly@example.com  
+    Пароль = WrongPassword!
+  steps:
+    - Ввести email
+    - Ввести неверный пароль
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Отображается сообщение об ошибке (например, "Invalid credentials")
+
+- summary: |
+    Проверка входа с несуществующим email
+  requirement: |
+    При вводе несуществующего email система должна показать сообщение об ошибке
+  prerequisites: |
+    Открыта форма входа
+  test-data: |
+    Email = notexist@example.com  
+    Пароль = Somepass123!
+  steps:
+    - Ввести несуществующий email
+    - Ввести любой пароль
+    - Нажать кнопку "Submit"
+  expected-result: |
+    Отображается сообщение об ошибке (например, "User not found")
+
+- summary: |
+    Проверка входа через GitHub
+  requirement: |
+    Пользователь должен иметь возможность авторизоваться через GitHub
+  prerequisites: |
+    Открыта форма входа
+  test-data: |
+    Аккаунт GitHub: github_user  
+    Пароль GitHub: github_password
+  steps:
+    - Нажать кнопку "Sign in with GitHub"
+    - Ввести логин и пароль GitHub (если требуется)
+    - Нажать "Authorize"
+  expected-result: |
+    Пользователь должен быть авторизован и перенаправлен на главную страницу сайта
+
+- summary: |
+    Проверка входа через Discord
+  requirement: |
+    Пользователь должен иметь возможность авторизоваться через Discord
+  prerequisites: |
+    Открыта форма входа
+  test-data: |
+    Аккаунт Discord: discord_user  
+    Пароль Discord: discord_password
+  steps:
+    - Нажать кнопку "Sign in with Discord"
+    - Ввести логин и пароль Discord (если требуется)
+    - Нажать "Авторизовать"
+  expected-result: |
+    Пользователь должен быть авторизован и перенаправлен на главную страницу сайта
