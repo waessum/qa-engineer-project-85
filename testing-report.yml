@@ -1,5 +1,21 @@
 ---
 - summary: |
+    Проверка загрузки стартовой страницы
+  status: pass
+
+- summary: |
+    Проверка перехода в анонимный режим битвы по кнопке "Try Simple Battle"
+  status: pass
+
+- summary: |
+    Проверка переключения языка описания задачи на экране битвы
+  status: pass
+
+- summary: |
+    Проверка наличия основных элементов экрана битвы
+  status: pass
+
+- summary: |
     Проверка перехода на форму регистрации
   status: pass
 
@@ -32,6 +48,26 @@
   status: pass
 
 - summary: |
+    Проверка поведения при регистрации уже существующего email
+  status: pass
+
+- summary: |
+    Проверка поведения при вводе слишком короткого nickname
+  status: pass
+
+- summary: |
+    Проверка поведения при вводе слишком длинного nickname
+  status: pass
+
+- summary: |
+    Проверка валидации пароля (длина)
+  status: pass
+
+- summary: |
+    Проверка повторного использования nickname
+  status: pass
+
+- summary: |
     Проверка перехода на форму входа из регистрации
   status: pass
 
@@ -60,7 +96,7 @@
   status: pass
 
 - summary: |
-    Проверка выхода из системы
+    Проверка выхода из аккаунта
   status: pass
 
 - summary: |
@@ -77,4 +113,60 @@
 
 - summary: |
     Проверка переключателей рейтинга (weekly, monthly, total)
+  status: pass
+
+- summary: |
+    Проверка открытия модального окна «Create a game»
+  status: pass
+
+- summary: |
+    Проверка выбора уровня и типа игры в модальном окне «Create a game»
+  status: pass
+
+- summary: |
+    Проверка настройки времени и фильтрации по тегам в модальном окне «Create a game»
+  status: pass
+
+- summary: |
+    Проверка создания битвы и перехода к экрану задач
+  status: pass
+
+- summary: |
+    Проверка наличия и работы элементов экрана битвы (TASK, OUTPUT, TIMEOUT и редакторы)
+  status: pass
+
+- summary: |
+    Проверка работы чата в режиме битвы
+  status: pass
+
+- summary: |
+    Проверка навигации кнопок «Open History» и «Back to Home»
+  status: pass
+
+- summary: |
+    Проверка начала боя и отображения редактора
+  status: pass
+
+- summary: |
+    Проверка отображения кода соперника в бою
+  status: pass
+
+- summary: |
+    Проверка успешного решения задачи
+  status: pass
+
+- summary: |
+    Проверка сообщения об ошибке при неверном решении
+  status: pass
+
+- summary: |
+    Проверка обновления рейтинга после боя
+  status: pass
+
+- summary: |
+    Проверка отображения истории боёв в профиле
+  status: pass
+
+- summary: |
+    Проверка адаптивности интерфейса на мобильных экранах
   status: pass
