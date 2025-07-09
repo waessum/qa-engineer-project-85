@@ -38,3 +38,43 @@
 - summary: |
     Проверка успешного входа с корректными данными
   status: pass
+
+- summary: |
+    Проверка входа с неверным паролем
+  status: pass
+
+- summary: |
+    Проверка входа с несуществующим email
+  status: pass
+
+- summary: |
+    Проверка авторизации через GitHub
+  status: pass
+
+- summary: |
+    Проверка авторизации через Discord
+  status: pass
+
+- summary: |
+    Проверка сохранения сессии после входа
+  status: pass
+
+- summary: |
+    Проверка выхода из системы
+  status: pass
+
+- summary: |
+    Проверка доступности кнопки Top list
+  status: pass
+
+- summary: |
+    Проверка работы пагинации на странице рейтинга пользователей
+  status: pass
+
+- summary: |
+    Проверка фильтрации отображения ботов на странице рейтинга пользователей
+  status: pass
+
+- summary: |
+    Проверка переключателей рейтинга (weekly, monthly, total)
+  status: pass
